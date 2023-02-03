@@ -1,0 +1,66 @@
+.main-content {
+  padding-top: 50px;
+  width: min(800px, 100%);
+  margin: auto;
+  display: block;
+  background-color: white;
+  cursor: url('./noam.png'), auto;
+}
+
+body {
+  background-color: rgb(252,252,252);
+}
+
+#type-0 {
+  height: 250px;
+  width: 350px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+#type-1 {
+  height: 190px;
+  width: 270px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+#type-2 {
+  height: 140px;
+  width: 220px;  
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+#type-3 {
+  height: 90px;
+  width: 180px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.level {
+  border: 1px solid black;
+  margin-left: auto;
+  display: block;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.main-heading {
+  text-align: center;
+}
+
+.collapse {
+  justify-content: center;
+}
+
+.type-content {
+  padding: 50px 100px;
+  min-height: 500px;
+}
+
+.d-none {
+  display: none;
+}

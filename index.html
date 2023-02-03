@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./noam.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <title>Simple Chomsky Hierarchy</title>
+</head>
+<body class="bg-light">
+
+  <div class="main-content">
+
+    
+    
+    <div id="type-0" class="level">
+      recursively enumerable
+      <div id="type-1" class="level">
+        context-sensitive
+        <div id="type-2" class="level">
+          context-free
+          <div id="type-3" class="level">
+            regular
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 class="main-heading">Chomsky Hierarchy</h1>
+    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li id="grammar-defn-nav-item" class="nav-item active">
+            <a class="nav-link" href="#"><i>What's a Grammar?</i></a>
+          </li>
+          <li id="type-0-nav-item" class="nav-item">
+            <a class="nav-link" href="#">Type 0</a>
+          </li>
+          <li id="type-1-nav-item" class="nav-item">
+            <a class="nav-link" href="#">Type 1</a>
+          </li>
+          <li id="type-2-nav-item" class="nav-item">
+            <a class="nav-link" href="#">Type 2</a>
+          </li>
+          <li id="type-3-nav-item" class="nav-item">
+            <a class="nav-link" href="#">Type 3</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="type0-content" class="type-content d-none">
+      <h3>Type 0 Grammar</h3>
+      <p align="justify">Type 0 grammars generate recursively enumerable languages, which is the type of language accepted by a Turing machine.
+        This type of grammar includes all formal grammars.
+      </p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Example 1</h5>
+          <p class="card-text">
+            All regular, context-free, and context-sensitive languages are recursively enumerable.
+
+            An example of a recursively enumerable language that is not at the same time
+            context-sensitive is the set of Turing machines that halt.
+          </p>
+        </div>
+      </div>
+    </div>
+  
+    <div id="type1-content" class="type-content d-none">
+      <h3>Type 1 Grammar</h3>
+      <p align="justify">
+        Type 1 grammars generate context-sensitive languages, which is the type of language accepted by a
+        linear bounded automaton. In this type of grammar, given a set of production rules of the form LHS &rarr; RHS, the LHS 
+        should be of the form &alpha;&Alpha;&beta;	&rarr; &alpha;&gamma;&beta;, where &Alpha; is a nonterminal, while
+        &alpha;, &gamma;, and &beta; can be terminals or nonterminals and &gamma; is not an empty string.
+      </p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Example 1</h5>
+          <p class="card-text">
+            The grammar defined by the set of nonterminal symbols {A, B, S}, terminal symbols {a, b, c}, 
+            start symbol {S}, and production rules <br>
+            &emsp; S &rarr; aSAB <br>
+            &emsp; S &rarr; aAb <br>
+            &emsp; BA &rarr; AB <br>
+            &emsp; CB &rarr; cc <br>
+            &emsp; aA &rarr; ab <br>
+            &emsp; bA &rarr; bb <br>
+            &emsp; bB &rarr; bc <br>
+             is a Type 1 grammar.          
+          </p>
+
+          <p>This generates the context-sensitive language a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> where n is a positive integer. This is an example of a 
+            Type 1 grammar that is not at the same time Type 2.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="type2-content" class="type-content d-none">
+      <h3>Type 2 Grammar</h3>
+      <p align="justify">Type 2 grammars generate context-free languages, which is the type of language accepted by a nondeterministic pushdown 
+        automaton. In this type of grammar, given a set of production rules of the form LHS &rarr; RHS, the LHS should be
+        a single nonterminal symbol, while the RHS can be a string of nonterminals and terminals.</p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Example 1</h5>
+          <p class="card-text">The grammar defined by the set of nonterminal symbols {A}, terminal symbols {a, b}, 
+            start symbol {A}, and production rules <br>
+            &emsp; A &rarr; ab <br>&emsp; A &rarr; aAb <br> is a Type 2 grammar.</p>
+
+          <p>This generates the context-free language a<sup>n</sup>b<sup>n</sup> where n is a positive integer. This is an example of a 
+            Type 2 grammar that is not at the same time Type 3.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="type3-content" class="type-content d-none">
+      <h3>Type 3 Grammar</h3>
+      <p align="justify">The most restrictive type of grammar and is pictured in the diagram above as the innermost circle. 
+        Type 3 grammars generate regular languages, which is the type of language accepted by a finite-state automaton.
+        In this type of grammar, given a set of production rules of the form LHS &rarr; RHS, the LHS should be
+        a single nonterminal symbol, while the RHS can only be either a single terminal symbol or one terminal symbol with
+        one nonterminal symbol.
+      </p>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Example 1</h5>
+          <p class="card-text">
+            The grammar defined by the set of nonterminal symbols {A}, terminal symbols {a}, 
+            start symbol {A}, and production rules <br>
+            &emsp; A &rarr; a <br> 
+            &emsp; A &rarr; Ʌ <br>
+            is a Type 3 grammar.</p>
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Example 2</h5>
+          <p class="card-text">
+            The grammar defined by the set of nonterminal symbols {A}, terminal symbols {a}, 
+            start symbol {A}, and production rules <br>
+            &emsp; A &rarr; aA<br> 
+            &emsp; A &rarr; a <br>
+            is a Type 3 grammar.
+          </p>
+
+          <p>
+            This generates the regular language a<sup>n</sup> where n is a positive integer. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="grammar-defn-content" class="type-content">
+      <h3>Formal Grammar</h3>
+      
+      <div class="card mt-4 mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Informal Definition</h5>
+          <p class="card-text">
+            A grammar consists of a set of production rules (also called rewriting rules), usually written in the notation
+            LFS &rarr; RHS. Both sides are composed of symbols in the alphabet of the grammar. These symbols can be classified
+            into nonterminal symbols (usually represented by uppercase letters), terminal symbols (usually represented 
+            by lowercase letters), and a start symbol.
+          </p>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Example 1</h5>
+          <p class="card-text">
+            The set of nonterminal symbols {A}, terminal symbols {a}, start symbol {A}, and production rules <br>
+            &emsp; A &rarr; a <br>&emsp; A &rarr; aA <br> define a grammar.
+          </p>
+
+          <p>
+            This example grammar generates a language of only the symbol 'a', reminiscent of 
+            <a href="https://esolangs.org/wiki/AAAAAAAAAAAAAA!!!!">a certain programming language.</a>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        Quote
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>“Language is a process of free creation; its laws and principles are fixed, but the manner in 
+            which the principles of generation are used is free and infinitely varied.</p>
+          <footer class="blockquote-footer">Noam Chomsky in <cite title="Source Title">For Reasons of State</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div id="summary" class="type-content" style="min-height: 200px;">
+      <h3 class="mb-3">Summary Table</h3>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">
+              generate...
+            </th>
+            <th scope="col">recognized by...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Type 3 Grammars</td>
+            <td>Regular languages</td>
+            <td>Finite state automata</td>
+          </tr>
+          <tr>
+            <td>Type 2 Grammars</td>
+            <td>Context-free languages</td>
+            <td>Nondeterministic pushdown automata</td>
+          </tr>
+          <tr>
+            <td>Type 1 Grammars</td>
+            <td>Context-sensitive languages</td>
+            <td>linear-bounded automata</td>
+          </tr>
+          <tr>
+            <td>Type 0 Grammars</td>
+            <td>Recursively enumerable languages</td>
+            <td>Turing machines</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="refs" class="type-content" align="justify" style="min-height: 200px;">
+      <h3>References</h3>
+      <p>Geuvers, H and J Rot. 2016-2017. Applications, Chomsky Hierarchy, and Recap. https://www.cs.ru.nl/~herman/onderwijs/2016TnA/lecture7.pdf.</p>
+      <p>Devopedia. 2021. "Chomsky Hierarchy." Version 9, June 28. Accessed 2023-01-09. https://devopedia.org/chomsky-hierarchy</p>
+
+      <p>Hopcroft, John, Rajeev Motwani, and Jeffery Ullman. 2001. "Introduction to Automata theory, languages and computation." </p>
+      
+    </div>
+
+    <div id="footer">
+
+    </div>
+  </div>
+
+
+  
+  
+  <script>
+    
+    $("#type-0").click(function(e) {
+      var senderElement = e.target;
+      if(senderElement.id === 'type-0') {
+        clickType0();
+      }});
+
+    $("#type-1").click(function(e) {
+      var senderElement = e.target;
+      if(senderElement.id === 'type-1') {
+        clickType1();
+      }});
+    
+
+    $("#type-2").click(function(e) {
+      var senderElement = e.target;
+      if(senderElement.id === 'type-2') {
+        clickType2();
+      }});
+
+    $("#type-3").click(function(e) {
+      var senderElement = e.target;
+      if(senderElement.id === 'type-3') {
+        clickType3();
+      }});
+
+    $("#grammar-defn-nav-item").click(function(e) {
+
+      
+      $("#type1-content").addClass('d-none');
+      $("#type2-content").addClass('d-none');
+      $("#type3-content").addClass('d-none');
+      $("#type0-content").addClass('d-none');
+      $('#grammar-defn-content').removeClass('d-none')
+
+      $("#type-1-nav-item").removeClass('active');
+      $("#type-2-nav-item").removeClass('active');
+      $("#type-3-nav-item").removeClass('active');
+      $("#type-0-nav-item").removeClass('active');
+      $('#grammar-defn-nav-item').addClass('active')
+      });
+
+
+    function clickType0() {
+      $("#type-0").addClass('bgc-blue');
+      $('#grammar-defn-content').addClass('d-none');
+      $("#type1-content").addClass('d-none');
+      $("#type2-content").addClass('d-none');
+      $("#type3-content").addClass('d-none');
+      $("#type0-content").removeClass('d-none');
+
+      $("#type-1-nav-item").removeClass('active');
+      $("#type-2-nav-item").removeClass('active');
+      $("#type-3-nav-item").removeClass('active');
+      $('#grammar-defn-nav-item').removeClass('active');
+      $("#type-0-nav-item").addClass('active');
+    }
+
+    function clickType1() {
+      $('#grammar-defn-nav-item').removeClass('active');
+      $('#grammar-defn-content').addClass('d-none');
+
+      $("#type0-content").addClass('d-none');
+      $("#type2-content").addClass('d-none');
+      $("#type3-content").addClass('d-none');
+      $("#type1-content").removeClass('d-none');
+
+      $("#type-0-nav-item").removeClass('active');
+      $("#type-2-nav-item").removeClass('active');
+      $("#type-3-nav-item").removeClass('active');
+      $("#type-1-nav-item").addClass('active');
+
+    }
+
+    function clickType2() {
+      $('#grammar-defn-nav-item').removeClass('active');
+      $('#grammar-defn-content').addClass('d-none');
+
+      $("#type0-content").addClass('d-none');
+      $("#type1-content").addClass('d-none');
+      $("#type3-content").addClass('d-none');
+      $("#type2-content").removeClass('d-none');
+
+      $("#type-0-nav-item").removeClass('active');
+      $("#type-1-nav-item").removeClass('active');
+      $("#type-3-nav-item").removeClass('active');
+      $("#type-2-nav-item").addClass('active');
+    }
+
+    function clickType3() {
+      $('#grammar-defn-nav-item').removeClass('active');
+      $('#grammar-defn-content').addClass('d-none');
+
+      $("#type0-content").addClass('d-none');
+      $("#type1-content").addClass('d-none');
+      $("#type2-content").addClass('d-none');
+      $("#type3-content").removeClass('d-none');
+
+      $("#type-0-nav-item").removeClass('active');
+      $("#type-1-nav-item").removeClass('active');
+      $("#type-2-nav-item").removeClass('active');
+      $("#type-3-nav-item").addClass('active');
+
+    }
+
+    $("#type-0-nav-item").click(function(e) {
+      clickType0();
+    });
+
+    $("#type-1-nav-item").click(function(e) {
+      clickType1();
+    });
+
+    $("#type-2-nav-item").click(function(e) {
+      clickType2();
+    });
+
+    $("#type-3-nav-item").click(function(e) {
+      clickType3();
+    });
+    
+  </script>
+</body>
+</html>
